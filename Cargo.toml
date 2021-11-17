@@ -3,11 +3,12 @@ name = "snd-dl-rs"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-author = "wrott <wrottkitkatt@gmail.com>"
+author = ["wrott <wrottkitkatt@gmail.com>"]
 description = "Soundcloud cli downloader"
 keywords = ["soundcloud", "music", "downloader", "cli"]
 readme = "README.md"
 categories = ["command-line-utilities"]
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
@@ -15,8 +16,8 @@ bytes = "1.0.1"
 m3u8-rs = "1.0.6"
 clap = "2.33.3"
 indicatif = "0.16.2"
-serde = "1.0.130"
-reqwest = "0.11.6"
+serde = {version = "1.0.130", features = ["derive"]}
+reqwest = { version = "0.11", features = ["blocking", "json"]}
 
 [profile.release]
 opt-level = 3
