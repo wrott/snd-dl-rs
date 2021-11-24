@@ -38,15 +38,6 @@ fn main() -> () {
     let track_info = api::resolve_track_info(url)
         .expect("Failed to resolve track info");
 
-    let args = App::new("snd-dl-rs")
-        .version(VERSION)
-        .about("Soundcloud downloader")
-        .arg(Arg::new("URL")
-            .about("Sets the input URL to use")
-            .required(true)
-            .index(1))
-        .get_matches();
-
 
     if track_info.downloadable {
         let raw_track = download_original_track(track_info.id)
@@ -58,6 +49,4 @@ fn main() -> () {
             .expect("No original download or mpeg stream available for track");
             download_hls_track(stream_url, track_info.permalink)
     }
-
-
 }
