@@ -1,17 +1,14 @@
-use std::io;
-use std::io::Read;
-
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
 pub struct DownloadTrackResponse {
     #[serde(rename = "redirectUri")]
-    pub redirect_url: String
+    pub redirect_url: String,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct DownloadStreamResponse {
-    pub url: String
+    pub url: String,
 }
 
 #[derive(Deserialize, Debug)]
@@ -20,7 +17,7 @@ pub struct TrackInfo {
     pub downloadable: bool,
     pub permalink: String,
     pub purchase_url: Option<String>,
-    media: Media
+    media: Media,
 }
 
 impl TrackInfo {
@@ -35,7 +32,7 @@ impl TrackInfo {
 
 #[derive(Deserialize, Debug)]
 struct Media {
-    transcodings: Vec<Transcoding>
+    transcodings: Vec<Transcoding>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -46,5 +43,5 @@ struct Transcoding {
 
 #[derive(Deserialize, Debug)]
 struct Format {
-    mime_type: String
+    mime_type: String,
 }

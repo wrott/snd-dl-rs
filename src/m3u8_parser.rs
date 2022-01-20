@@ -2,8 +2,7 @@ use std::fs::File;
 use std::io::Write;
 
 use bytes::Bytes;
-use m3u8_rs::parse_playlist_res;
-use m3u8_rs::playlist::{MediaPlaylist, Playlist};
+use m3u8_rs::{MediaPlaylist, parse_playlist_res, Playlist};
 
 use crate::{get_bytes, m3u8_parser};
 
@@ -11,12 +10,10 @@ pub fn download_hls_stream_to_file(url: String, output_file: &File) {
     let m3u8_bytes = get_bytes(url).expect("Failed to get bytes for playlist");
     let parsed_m3u8 = m3u8_parser::parse_playlist_res(&m3u8_bytes[..]);
     match parsed_m3u8 {
-        Ok(Playlist::MediaPlaylist(playlist)) => download_segments_to_file(playlist,
-                                                                           &output_file),
+        Ok(Playlist::MediaPlaylist(playlist)) => download_segments_to_file(playlist, output_file),
         Ok(Playlist::MasterPlaylist(_)) => panic!("m3u8 should be playlist of segments not playlist of playlists"),
         Err(_) => panic!("m3u8 parsing error")
     }
-
 }
 
 fn download_segments_to_file(playlist: MediaPlaylist, output_file: &File) {
