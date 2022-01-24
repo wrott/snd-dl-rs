@@ -3,7 +3,7 @@ name = "snd-dl-rs"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-author = ["Vladyslav Stepanov <wrottkitkatt@gmail.com>"]
+authors = ["Vladyslav Stepanov <wrottkitkatt@gmail.com>"]
 description = "Soundcloud cli downloader"
 keywords = ["soundcloud", "music", "downloader", "cli"]
 readme = "README.md"
@@ -16,7 +16,7 @@ bytes = "1.1.0"
 m3u8-rs = "3.0.0"
 clap = "3.0.10"
 indicatif = "0.16.2"
-serde = { version = "1.0.133", features = ["derive"] }
+serde = { version = "1.0.135", features = ["derive"] }
 reqwest = { version = "0.11.9", features = ["blocking", "json"] }
 
 [profile.release]
